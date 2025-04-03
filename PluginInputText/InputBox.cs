@@ -196,11 +196,11 @@ namespace InputText
         }
         #endregion
         #region ChangeFontSize(string) -- changes the font's point size (supports floating-point values)
-        public void ChangeFontSize(string sSize)
+        public void ChangeFontSize(string sSize, double scale)
         {
             try
             {
-                this.txtInput.Font = new Font(this.txtInput.Font.Name, float.Parse(sSize));
+                this.txtInput.Font = new Font(this.txtInput.Font.Name, (float)(float.Parse(sSize) * scale));
             }
             catch { }
         }

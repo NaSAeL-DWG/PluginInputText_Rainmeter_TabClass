@@ -132,7 +132,7 @@ namespace InputText
                     //
                     // DefaultValue="hello there, how are you"
                     sLine = ScanAndReplace(sLine, "DefaultValue", Overrides);
-                    sLine = ScanAndReplace(sLine, "Scale", Overrides;
+                    sLine = ScanAndReplace(sLine, "Scale", Overrides);
                     sLine = ScanAndReplace(sLine, "X", Overrides, true);
                     sLine = ScanAndReplace(sLine, "Y", Overrides, true);
                     sLine = ScanAndReplace(sLine, "W", Overrides, true);
@@ -282,8 +282,9 @@ namespace InputText
                 this._InputBox = new InputBox(skin);
                 input = this._InputBox;
 
-                input.ChangeX("0");
-                input.ChangeY("0");
+                input.ChangeX("0", 1);
+                input.ChangeY("0", 1);
+
 
                 double scale = 1.0; 
                      if (Overrides.ContainsKey("Scale"))
@@ -307,7 +308,7 @@ namespace InputText
                 };
 
                 changeSetting("FontFace", input.ChangeFontFace);
-                changeSetting("FontSize", input.ChangeFontSize);
+                changeSetting("FontSize", (value) => input.ChangeFontSize(value, scale));
 
                 changeSetting("W", (value) => input.ChangeW(value, scale));
                 changeSetting("H", (value) => input.ChangeH(value, scale));
